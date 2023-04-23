@@ -52,14 +52,14 @@ export default function SignIn(props) {
                       <div className="d-flex flex-row align-items-center mb-4">
                         <i className="fas fa-envelope fa-lg me-3 fa-fw"></i>
                         <div className="form-outline flex-fill mb-0">
-                        <input type="email" className="form-control" value={credentials.email} id="email" name='email' aria-describedby="emailHelp" onChange={onChange}/>
+                        <input type="email" className="form-control" value={credentials.email} id="email" name='email' aria-describedby="emailHelp" onChange={onChange} required/>
                         <label htmlFor="email" className="form-label">Email address</label>
                         </div>
                       </div>
                       <div className="d-flex flex-row align-items-center mb-4">
                         <i className="fas fa-lock fa-lg me-3 fa-fw"></i>
                         <div className="form-outline flex-fill mb-0">
-                        <input type="password" className="form-control" value={credentials.password} name='password' id="password" onChange={onChange}/>
+                        <input type="password" className="form-control" value={credentials.password} name='password' id="password" onChange={onChange} required minLength={5}/>
                         <label htmlFor="password" className="form-label">Password</label>
                         </div>
                       </div>
