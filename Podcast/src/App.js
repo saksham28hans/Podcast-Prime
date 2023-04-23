@@ -2,7 +2,6 @@ import React, {useState } from 'react';
 import { BrowserRouter as Router,Routes,Route} from 'react-router-dom';
 import './App.css';
 // importing components
-import Header from './components/HeaderF/Header';
 import Listened from "./components/ListenedF/Listened";
 import Signup from './components/UsersF/Signup';
 import SignIn from './components/UsersF/SignIn';
@@ -37,7 +36,6 @@ function App() {
 
   return (
       <div>
-        <Header user={user} onLogout={handleLogout} />
         <Alert alert={alert}/>
           <Routes>
             <Route exact path="/" element={ <Home showAlert={showAlert}/>} />
