@@ -1,6 +1,8 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { GlobalContext } from "../../context/GlobalState";
+import StarBorderIcon from '@mui/icons-material/StarBorder';
+import HeadphonesIcon from '@mui/icons-material/Headphones';
 // import Listened from "../ListenedF/Listened";
 
 import "./Header.css";
@@ -22,9 +24,9 @@ const Header = () => {
               <Link to="/watchlist" activeClassName="active">
                 Favourite List{" "}
                 {watchlist.length > 0 ? (
-                  <i class="fa-solid fa-tv" style={{ color: "gold" }}></i>
+                  <StarBorderIcon style={{ color: "red" }}/>
                 ) : (
-                  <i class="fa-solid fa-tv"></i>
+                  <StarBorderIcon/>
                 )}
               </Link>
             </li>
@@ -32,12 +34,9 @@ const Header = () => {
               <Link to="/listened" activeClassName="active">
                 Listened{" "}
                 {watched.length > 0 ? (
-                  <i
-                    class="fa-solid fa-headphones"
-                    style={{ color: "red" }}
-                  ></i>
+                  <HeadphonesIcon style={{ color: "red" }}/>
                 ) : (
-                  <i class="fa-solid fa-headphones"></i>
+                  <HeadphonesIcon/>
                 )}
               </Link>
             </li>
