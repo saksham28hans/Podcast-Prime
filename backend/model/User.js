@@ -6,6 +6,7 @@ const UserSchema =new mongoose.Schema({
     password : {type:String, required:true},
     profilePic : {type:String,default:""},
     favourite : {type:Array},
+    continue : {type:Array},
     isAdmin : {type:Boolean, default:false},
     },
      {timestamps:true}

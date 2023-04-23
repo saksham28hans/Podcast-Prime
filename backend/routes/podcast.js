@@ -89,5 +89,22 @@ router.get('/', verify, async(req,res)=>{
     }
 })
 
+//Get recent 5
+router.get('/recent', verify, async(req,res)=>{
+    if(req.user.isAdmin)
+    {
+    try {
+         const podcast = await Podcast.find().sort({ _id: -1 }).limit(5);
+        res.status(200).json(podcast.data);
+    } catch (error) {
+       res.status(500).json(error);
+    }
+    }
+    else
+    {
+     return res.status(401).json("You are not authorized")
+    }
+})
+
 
 module.exports = router;

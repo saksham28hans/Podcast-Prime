@@ -97,4 +97,38 @@ router.get('/stats',async(req,res)=>{
     }
 })
 
+//Add to favourite
+router.post('/favourite',async(req,res)=>{
+    try {
+        const user = await User.findById(req.body.id);
+        if(user)
+        {
+        console.log(req.body);
+        await user.updateOne({
+            $push : { favourite : req.body.podcast }}
+    );
+    console.log("Hello");
+    return res.status(201).json("Podcast was added to favourite list");
+        }
+    } catch (error) {
+        res.status(500).json(error);
+    }
+})
+
+//Add to Continue Watching
+router.post('/continue',async(req,res)=>{
+    try {
+        const user = await User.findById(req.body.id);
+        if(user)
+        {
+        await user.updateOne({
+            $push : { continue : {podcast: req.body.podcast,time: req.body.time} }}
+    );
+    return res.status(201).json("Podcast was added to continue list");
+        }
+    } catch (error) {
+        res.status(500).json(error);
+    }
+})
+
 module.exports = router
