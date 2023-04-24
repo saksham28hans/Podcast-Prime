@@ -5,13 +5,15 @@ import { GlobalContext } from "../../context/GlobalState";
 import Header from "../HeaderF/Header";
 import axios from "axios";
 import './Home.css';
+import FavList from "../FavouriteListF/FavList";
 
 function Home() {
   const context = useContext(GlobalContext);
   const { input } = context;
 
   const [lists, setLists] = useState([]);
-
+  const [podcast, setPodcast] = useState([]);
+  const [filtered,setfiltered] = useState([]);
   useEffect(() => {
     const getList = async () => {
       try {
@@ -28,13 +30,60 @@ function Home() {
       }
     };
     getList()
-  }, []);
 
+    const getPodcast = async () => {
+      try {
+        const res1 = await axios.get(`podcast`);
+        // , {
+        //   headers: {
+        //     token: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NDM4MjA4YmI1MmRmYzUwZDU1MjA0NCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY4MjI4MjMxNSwiZXhwIjoxNjgyNzE0MzE1fQ.Jz9XKU95rCt_KFCBrfM99V7kUnqlLeihT_wL1DiblBE`,
+        //   },
+        // });
+        // console.log(res.data)
+        setPodcast(res1.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getPodcast()
+  }, []);
+  console.log(filtered);
+  console.log("Hello")
+  useEffect(() => {
+    if(input === "")
+    {
+      setfiltered([]);
+    }
+    else{
+
+      console.log(input);
+      const filtered_rows = podcast.filter((pod)=>{
+        return (
+          (pod.title.toLowerCase().includes(input.toLowerCase())) ||
+          (pod.speaker.toLowerCase().includes(input.toLowerCase())) || 
+          (pod.category.toLowerCase().includes(input.toLowerCase()))
+        );
+      });
+      setfiltered(filtered_rows);
+      // setfiltered(podcast.filter((pod)=> { return 
+        // pod.title.toLowerCase().includes(input)
+        // (pod.speaker.includes(input)) ||
+        //  pod.category.includes(input) )}
+      // }))
+    }
+  }, [input])
+  
+  useEffect(() => {
+  
+    console.log(filtered)
+  }, [filtered])
+  
+ console.log(podcast)
   return (
     <>
       <Header />
       <Search />
-      {input === "" && (
+      {input === "" ? (
         <>
         
         {lists.map((list)=>(
@@ -42,6 +91,10 @@ function Home() {
           <List key={list._id} list={list} />
         ))}
         </> 
+       ) : (
+        filtered.map((podcast)=>{
+          {/* return  */}
+        })
        )}  
     </>
   );

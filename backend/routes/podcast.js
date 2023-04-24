@@ -73,20 +73,16 @@ router.delete('/:id',verify,async(req,res)=>{
 
 
 //Get All
-router.get('/', verify, async(req,res)=>{
-    if(req.user.isAdmin)
-    {
+router.get('/',async(req,res)=>{
+    
     try {
          const podcast = await Podcast.find();
         res.status(200).json(podcast.reverse());
     } catch (error) {
        res.status(500).json(error);
     }
-    }
-    else
-    {
-     return res.status(401).json("You are not authorized")
-    }
+    
+    
 })
 
 //Get recent 5
