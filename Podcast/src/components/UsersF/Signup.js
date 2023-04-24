@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import './signup.css'
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router"; 
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 export default function Signup(props) {
 
@@ -78,6 +79,7 @@ export default function Signup(props) {
                         <button type="Submit" className="btn btn-primary btn-lg"> Register </button>
                       </div>
                     </form>
+                    <Link to="/signin">Already have an Account? Login!</Link>
                   </div>
                   <div className="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
                     <img
