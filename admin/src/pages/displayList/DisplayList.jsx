@@ -53,6 +53,9 @@ const DisplayList = () => {
       ];
   return (
     <div className='productList'>
+     <Link to='/newList'>
+            <button className="productAddButton">Create</button>
+    </Link>
       <DataGrid
         rows={lists}
         columns={columns}

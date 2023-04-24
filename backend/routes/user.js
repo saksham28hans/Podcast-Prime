@@ -103,12 +103,19 @@ router.post('/favourite',async(req,res)=>{
         const user = await User.findById(req.body.id);
         if(user)
         {
-        console.log(req.body);
+        if(!user.favourite.includes(req.body.podcast))
+        {
         await user.updateOne({
             $push : { favourite : req.body.podcast }}
     );
     console.log("Hello");
     return res.status(201).json("Podcast was added to favourite list");
+        }
+        else
+        {
+            await user.updateOne({ $pull : {favourite:req.body.podcast}})
+            res.status(200).json("Podcast was removed from favourite list")
+        }
         }
     } catch (error) {
         res.status(500).json(error);
