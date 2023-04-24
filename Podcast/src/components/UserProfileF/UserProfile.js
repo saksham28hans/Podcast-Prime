@@ -1,91 +1,91 @@
-import React, { useState } from "react";
-import "./UserProfile.css";
+// // import React, { useState } from "react";
+// // import "./UserProfile.css";
 
-function UserProfile() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [profilePicture, setProfilePicture] = useState("");
+// // function UserProfile() {
+// //   const [name, setName] = useState("");
+// //   const [email, setEmail] = useState("");
+// //   const [password, setPassword] = useState("");
+// //   const [profilePicture, setProfilePicture] = useState("");
 
-  const handleNameChange = (event) => {
-    setName(event.target.value);
-  };
+// //   const handleNameChange = (event) => {
+// //     setName(event.target.value);
+// //   };
 
-  const handleEmailChange = (event) => {
-    setEmail(event.target.value);
-  };
+// //   const handleEmailChange = (event) => {
+// //     setEmail(event.target.value);
+// //   };
 
-  const handlePasswordChange = (event) => {
-    setPassword(event.target.value);
-  };
+// //   const handlePasswordChange = (event) => {
+// //     setPassword(event.target.value);
+// //   };
 
-  const handleProfilePictureChange = (event) => {
-    setProfilePicture(event.target.value);
-  };
+// //   const handleProfilePictureChange = (event) => {
+// //     setProfilePicture(event.target.value);
+// //   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // Handle form submission
-  };
+// //   const handleSubmit = (event) => {
+// //     event.preventDefault();
+// //     // Handle form submission
+// //   };
 
-  return (
-    <div className="body">
-      <h1 className="formheading">Profile Settings</h1>
-      <div className="formbody">
-        <form onSubmit={handleSubmit}>
-          <label className="formlabel">
-            Name:&nbsp;&nbsp;
-            <input
-              className="formInput"
-              type="text"
-              value={name}
-              onChange={handleNameChange}
-            />
-          </label>
-          <br />
-          <label className="formlabel">
-            Email:&nbsp;&nbsp;
-            <input
-              className="formInput"
-              type="email"
-              value={email}
-              onChange={handleEmailChange}
-            />
-          </label>
-          <br />
-          <label className="formlabel">
-            Password:&nbsp;&nbsp;
-            <input
-              className="formInput"
-              type="password"
-              value={password}
-              onChange={handlePasswordChange}
-            />
-          </label>
-          <br />
-          <label className="formlabel">
-            Profile Picture:&nbsp;&nbsp;
-            <input
-              className="formInput"
-              type="file"
-              value={profilePicture}
-              onChange={handleProfilePictureChange}
-            />
-          </label>
-          <br />
-          <div class="button-container">
-            <button className="formbutton">Cancel</button>
-            <button className="formbutton" type="submit">
-              Save
-            </button>
-          </div>
-        </form>
-      </div>
-    </div>
-  );
-}
+// //   return (
+// //     <div className="body">
+// //       <h1 className="formheading">Profile Settings</h1>
+// //       <div className="formbody">
+// //         <form onSubmit={handleSubmit}>
+// //           <label className="formlabel">
+// //             Name:&nbsp;&nbsp;
+// //             <input
+// //               className="formInput"
+// //               type="text"
+// //               value={name}
+// //               onChange={handleNameChange}
+// //             />
+// //           </label>
+// //           <br />
+// //           <label className="formlabel">
+// //             Email:&nbsp;&nbsp;
+// //             <input
+// //               className="formInput"
+// //               type="email"
+// //               value={email}
+// //               onChange={handleEmailChange}
+// //             />
+// //           </label>
+// //           <br />
+// //           <label className="formlabel">
+// //             Password:&nbsp;&nbsp;
+// //             <input
+// //               className="formInput"
+// //               type="password"
+// //               value={password}
+// //               onChange={handlePasswordChange}
+// //             />
+// //           </label>
+// //           <br />
+// //           <label className="formlabel">
+// //             Profile Picture:&nbsp;&nbsp;
+// //             <input
+// //               className="formInput"
+// //               type="file"
+// //               value={profilePicture}
+// //               onChange={handleProfilePictureChange}
+// //             />
+// //           </label>
+// //           <br />
+// //           <div class="button-container">
+// //             <button className="formbutton">Cancel</button>
+// //             <button className="formbutton" type="submit">
+// //               Save
+// //             </button>
+// //           </div>
+// //         </form>
+// //       </div>
+// //     </div>
+// //   );
+// // }
 
-export default UserProfile;
+// // export default UserProfile;
 
 
 // import React, { useState } from "react";

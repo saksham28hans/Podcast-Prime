@@ -26,6 +26,16 @@ const Header = () => {
           </div>
 
           <ul className="nav-links">
+          <li>
+              <Link to="/watchlist" activeClassName="active">
+                Continue Watching{" "}
+                {watchlist.length > 0 ? (
+                  <StarBorderIcon style={{ color: "red" }}/>
+                ) : (
+                  <StarBorderIcon/>
+                )}
+              </Link>
+            </li>
             <li>
               <Link to="/watchlist" activeClassName="active">
                 Favourite List{" "}
