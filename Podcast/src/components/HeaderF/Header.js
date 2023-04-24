@@ -12,10 +12,11 @@ const Header = () => {
   let navigate=useNavigate();
 
   const handleLogout=()=>{
+      
       localStorage.removeItem('users');
       navigate('/signin');
   }
-
+  
   // console.log(watchlist ? true : false)
   return (
     <>
@@ -47,6 +48,9 @@ const Header = () => {
               </Link>
             </li>
             <li>
+                <span style={{color:'wheat'}}>{localStorage.getItem('users') && JSON.parse(localStorage.getItem('users')).username}</span>
+            </li>
+            <li>
             <div class="dropdown">
                 <a
                   href="/Home"
@@ -60,9 +64,6 @@ const Header = () => {
                   <img id="avatar" src="/netflix_avatar.jpg" alt="img"></img>
                 </a>
               <div class="dropdown-content">
-                <Link to="/profile" className="dropdown-item">
-                  Profile
-                </Link>
                 <div className="dropdown-divider"></div>
                 <p style={{cursor:'pointer',textAlign:'center'}} onClick={handleLogout} className="dropdown-item">
                   Logout

@@ -70,7 +70,7 @@ const ListItem = ({index, item}) => {
       <div className="itemInfo">
       <div class="listitemdetails">
         <nav>{movie.title}</nav>  
-        <a onClick={()=>{handleFavoriteClick(movie._id)}}>{JSON.parse(localStorage.getItem('users')).favourite.includes(movie._id) ? <Star /> : <StarBorderIcon />}</a>
+        <span onClick={()=>{handleFavoriteClick(movie._id)}}>{JSON.parse(localStorage.getItem('users')) && JSON.parse(localStorage.getItem('users')).favourite.includes(movie._id) ? <Star /> : <StarBorderIcon />}</span>
         </div>
         {isHovered && (
          <>

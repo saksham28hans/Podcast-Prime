@@ -1,5 +1,5 @@
 import React, {useState } from 'react';
-import { BrowserRouter as Router,Routes,Route} from 'react-router-dom';
+import { BrowserRouter as Router,Routes,Route, Navigate} from 'react-router-dom'; 
 import './App.css';
 // importing components
 import Listened from "./components/ListenedF/Listened";
@@ -38,20 +38,17 @@ function App() {
       <div>
         <Alert alert={alert}/>
           <Routes>
-            <Route exact path="/" element={ <Home showAlert={showAlert}/>} />
+            <Route exact path="/" element={!localStorage.getItem('users')?<Navigate to="/signin" />:<Home showAlert={showAlert}/>} />
             <Route exact path="/home" element={ <Home showAlert={showAlert} />} />
             <Route exact path="/listened" element={ <Listened showAlert={showAlert} />}/>
-            <Route exact path="/watchlist" element={ <FavList showAlert={showAlert} />}/>
-            <Route exact path="/continue" element={ <ContinueList showAlert={showAlert} />}/>
-            <Route exact path="/signin/" element={<SignIn showAlert={showAlert}/>}/>  
-            <Route exact path="/signup/" element={<Signup showAlert={showAlert}/>}/>
-            <Route exact path="/profile/" element={<UserProfile showAlert={showAlert}/>}/>
-            <Route exact path="/watch/" element={<Watch showAlert={showAlert}/>}/>
-            <Route exact path="/logout/" element={<Logout showAlert={showAlert}/>}/>
+            <Route exact path="/watchlist" element={!localStorage.getItem('users')?<Navigate to="/signin" />:<FavList showAlert={showAlert} />}/>s
+            <Route exact path="/signin/" element={localStorage.getItem('users')?<Navigate to="/" />:<SignIn showAlert={showAlert}/>}/>  
+            <Route exact path="/signup/" element={localStorage.getItem('users')?<Navigate to="/" />:<Signup showAlert={showAlert}/>}/>
+            <Route exact path="/watch/" element= {!localStorage.getItem('users')?<Navigate to="/signin" />:<Watch showAlert={showAlert}/>}/>
+            <Route exact path="/logout/" element={!localStorage.getItem('users')?<Navigate to="/signin" />:<Logout showAlert={showAlert}/>}/>
           </Routes>
       </div>
   );
 }
 
 export default App;
-
