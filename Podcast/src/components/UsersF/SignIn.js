@@ -8,7 +8,7 @@ export default function SignIn(props) {
   let navigate=useNavigate();//for history
   const handleSubmit = async (e) => {
       e.preventDefault();
-
+      console.log("Heo");
       try {
         const res = await axios.post('auth/login',credentials);
         localStorage.setItem("users", JSON.stringify(res.data))
