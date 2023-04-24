@@ -11,6 +11,7 @@ import Alert from './components/Alert';
 import UserProfile from './components/UserProfileF/UserProfile';
 import Watch from './components/WatchF/Watch';
 import Logout from './components/Logout';
+import ContinueList from './components/Continue Watching/ContinueList';
 
 
 function App() {
