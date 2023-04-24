@@ -1,32 +1,24 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
+import axios from "axios";
 
 export default function SignIn(props) {
   const [credentials, setCredentials] = useState({email:"",password:""})
   let navigate=useNavigate();//for history
   const handleSubmit = async (e) => {
       e.preventDefault();
-      const url = 'API_URL'
-      const response = await fetch(url, {
-          method: 'POST',
-          headers: {
-              'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({email:credentials.email,password:credentials.password})
-      }); 
-      const json=await response.json()
-      console.log(json);
-      if(json.success){
-          //redirect
-          localStorage.setItem('token',json.authToken);
-          props.showAlert('Logged in Successfully','success');
-          navigate('/');
+
+      try {
+        const res = await axios.post('auth/login',credentials);
+        localStorage.setItem("users", JSON.stringify(res.data))
+        props.showAlert('Logged in Successfully','success');
+        navigate('/');
+      } catch (error) {
+        console.log(error);
+        props.showAlert(error.message,"danger");
       }
-      else
-      {
-           props.showAlert(json.error,"danger");
-      }
-  }
+
+    }
   const onChange=(e)=>{
       setCredentials({...credentials,[e.target.name]:e.target.value}) // any thing that changes should be replaced with the value which is in name  all others will be same as before
   }
@@ -50,14 +42,14 @@ export default function SignIn(props) {
                     </p>
                     <form className="mx-1 mx-md-4" onSubmit={handleSubmit}>
                       <div className="d-flex flex-row align-items-center mb-4">
-                        <i className="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                        <i className="fas fa-envelope fa-lg me-3 fa-fw" style={{marginBottom:'25%'}}></i>
                         <div className="form-outline flex-fill mb-0">
                         <input type="email" className="form-control" value={credentials.email} id="email" name='email' aria-describedby="emailHelp" onChange={onChange}/>
                         <label htmlFor="email" className="form-label">Email address</label>
                         </div>
                       </div>
                       <div className="d-flex flex-row align-items-center mb-4">
-                        <i className="fas fa-lock fa-lg me-3 fa-fw"></i>
+                        <i className="fas fa-lock fa-lg me-3 fa-fw" style={{marginBottom:'25%'}}></i>
                         <div className="form-outline flex-fill mb-0">
                         <input type="password" className="form-control" value={credentials.password} name='password' id="password" onChange={onChange}/>
                         <label htmlFor="password" className="form-label">Password</label>

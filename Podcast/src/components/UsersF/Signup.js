@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import './signup.css'
 import { useNavigate } from "react-router";
+import axios from "axios";
+
 export default function Signup(props) {
 
   const [credentials, setCredentials] = useState({ email: "", password: "",name:"",cpassword:""});
@@ -15,25 +17,16 @@ export default function Signup(props) {
       props.showAlert("Password and confirm Password are different!",'danger');
     }
     else{
-      const url = "API_URL";
-      const response = await fetch(url, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ name: credentials.name, email: credentials.email, password: credentials.password })
-    });
-    const json = await response.json()
-    console.log(json);
-    if (json.success) { // if success
-      //redirect
-      props.showAlert('Account Created Successfully','success');
-      localStorage.setItem('token', json.authToken);  //athentication token to be taken from jwt
-      navigate('/');
-    }
-    else {
-      props.showAlert(json.error,"danger");
-    }
+
+      try {
+        const res = await axios.post('auth/register',{username: credentials.username, email: credentials.email, password: credentials.password});
+        localStorage.setItem("users", JSON.stringify(res.data))
+        props.showAlert('Logged in Successfully','success');
+        navigate('/');
+      } catch (error) {
+        console.log(error);
+        props.showAlert(error.message,"danger");
+      }
     }
   }
   return (
@@ -56,8 +49,8 @@ export default function Signup(props) {
                       <div className="d-flex flex-row align-items-center mb-4 input">
                         <i className="fas fa-user fa-lg me-3 fa-fw" style={{marginBottom : '10%'}}></i>
                         <div className="form-outline flex-fill mb-0">
-                          <input type="text" id="name" name='name' className="form-control" onChange={onChange} required  minLength={3}/>
-                          <label className="form-label" htmlFor="name">Your Name</label>
+                          <input type="text" id="name" name='username' className="form-control" onChange={onChange} required  minLength={3}/>
+                          <label className="form-label" htmlFor="name">Your Username</label>
                         </div>
                       </div>
                       <div className="d-flex flex-row align-items-center mb-4">

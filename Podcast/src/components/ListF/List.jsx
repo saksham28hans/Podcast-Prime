@@ -24,28 +24,16 @@ const List = ({list}) => {
 
   return (
     <div className='list'>
-      <span className="listTitle">Popular Podcast</span>
+      <span className="listTitle">{list.title}</span>
       <div className="wrapper">
         <ArrowBackIosOutlined style={{display:`${slideNumber ===0 ?`none`:''} `}} className='sliderArrow left' onClick={()=>{handleClick("left")}}/>
         <div className="container" ref={listRef}>
-            {/* {list.content.map((item,i)=> ( */}
-            {/* <ListItem index={i} item = {item} /> */}
-            {/* ))} */}
-            <ListItem />
-            <ListItem />
-            <ListItem />
-            <ListItem />
-            <ListItem />
-            <ListItem />
-            <ListItem />
-            <ListItem />
-            <ListItem />
-            <ListItem />
-            <ListItem />
-            <ListItem />
+            {list.content.map((item,i)=> (
+            <ListItem index={i} item = {item} />
+            ))}
             
         </div>
-        <ArrowForwardIosOutlined className='sliderArrow right' onClick={()=>{handleClick("right")}}/>
+        <ArrowForwardIosOutlined style={{display: `${list.content.length < 5 ? `none`:''}`}} className='sliderArrow right' onClick={()=>{handleClick("right")}}/>
       </div>
     </div>
   );

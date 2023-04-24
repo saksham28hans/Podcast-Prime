@@ -31,16 +31,6 @@ const Header = () => {
               </Link>
             </li>
             <li>
-              <Link to="/listened" activeClassName="active">
-                Listened{" "}
-                {watched.length > 0 ? (
-                  <HeadphonesIcon style={{ color: "red" }}/>
-                ) : (
-                  <HeadphonesIcon/>
-                )}
-              </Link>
-            </li>
-            <li>
             <div class="dropdown">
                 <a
                   href="/Home"
@@ -51,7 +41,7 @@ const Header = () => {
                   aria-haspopup="true"
                   aria-expanded="false"
                 >
-                  <img id="avatar" src="/img.jpg" alt="img"></img>
+                  <img id="avatar" src="/netflix_avatar.jpg" alt="img"></img>
                 </a>
               <div class="dropdown-content">
                 <Link to="/profile" className="dropdown-item">
