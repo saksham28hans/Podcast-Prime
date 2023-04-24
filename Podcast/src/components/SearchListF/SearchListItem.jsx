@@ -1,12 +1,12 @@
-import { Add, PlayArrow, ThumbDownOutlined,ThumbUpAltOutlined } from '@material-ui/icons';
+import { Add, PlayArrow, Star, ThumbDownOutlined,ThumbUpAltOutlined } from '@material-ui/icons';
 import {React, useState, useEffect} from 'react';
-import './ListItem.scss';
+import './SearchList.scss';
 import axios from "axios";
 import { Link } from 'react-router-dom';
 import StarBorderIcon from '@mui/icons-material/StarBorder';
 
 const SearchListItem = ({movie}) => {
-
+  
   const handleFavoriteClick = async (itemId) => {
     // const itemId = movie._id;
     const user_g = JSON.parse(localStorage.getItem('users'));
@@ -35,31 +35,24 @@ const SearchListItem = ({movie}) => {
 
   return (
 
-    <div className='listItem' 
-    style={{left:isHovered && index * 225 -50 + index*2.5}}
-    onMouseEnter={()=>{setisHovered(true)}} onMouseLeave={()=>{setisHovered(false)}}>
+    <div className='listItem1'>
         <Link className='link' to = {'/watch'} state = {{movie : movie}}>
       <img src={movie.img} alt={movie.title} />
         </Link>
       <div className="itemInfo">
-      <div class="listitemdetails">
+      <div class="listitemdetails1">
         <nav>{movie.title}</nav>  
-        <a onClick={()=>{handleFavoriteClick(movie._id)}}><StarBorderIcon/></a>
-        </div>
-        {isHovered && (
-         <>
-         {/* <video src="" controls autoPlay={true}  loop></video> */}
-        <div className="itemInfoTop">
-          <span>{movie.speaker}</span>
-          <span>{movie.type}</span>
+        {/* <a onClick={()=>{handleFavoriteClick(movie._id)}}>
+        
+        {JSON.parse(localStorage.getItem('users')).favourite.includes(movie._id) ? <Star /> : <StarBorderIcon />}</a> */}
         </div>
         <div className="desc">
-         {movie.desc}
+          <br/>
+         {movie.desc.slice(0, 50)+"..."}
+        
         </div>
-        <div className="genre">{movie.category}</div>
-        </>
-        )}
-      </div>
+        </div>
+        
     </div>
 
   );

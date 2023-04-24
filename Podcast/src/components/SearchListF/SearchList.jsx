@@ -1,18 +1,16 @@
 import React from 'react'
-import Header from '../HeaderF/Header'
-import SearchListItem from './searchListItem'
+import SearchListItem from './SearchListItem';
 
 function SearchList(props) {
   return (
    <>
-     <Header/>
         <div>
             <div className="container">
             <div className="row">
                 {
                 props.podcasts.map((element, idx) => {
-                    return <div className="col-md-4">
-                    <SearchListItem movie={element}  id={idx} />
+                    return <div className="col-md-3 py-4">
+                    <SearchListItem movie={element}  key={idx} />
                     </div>
                 })}
             </div>

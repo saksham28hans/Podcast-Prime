@@ -6,6 +6,7 @@ import Header from "../HeaderF/Header";
 import axios from "axios";
 import './Home.css';
 import FavList from "../FavouriteListF/FavList";
+import SearchList from '../SearchListF/SearchList';
 
 function Home() {
   const context = useContext(GlobalContext);
@@ -92,9 +93,7 @@ function Home() {
         ))}
         </> 
        ) : (
-        filtered.map((podcast)=>{
-          {/* return  */}
-        })
+        <SearchList podcasts ={filtered} />
        )}  
     </>
   );

@@ -1,6 +1,5 @@
 import React, { useContext, useState } from 'react';
 import TextField from "@mui/material/TextField";
-import Data from './Data'
 import "./Search.css";
 import { GlobalContext } from '../../context/GlobalState';
 
@@ -27,7 +26,6 @@ function Search() {
           label="Search Podcast"
         />
       </div>
-      <Data input={inputText} />
     </div>
   );
 }
