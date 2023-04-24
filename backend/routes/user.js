@@ -129,10 +129,14 @@ router.post('/continue',async(req,res)=>{
         const user = await User.findById(req.body.id);
         if(user)
         {
+        if(!user.continue.includes(req.body.podcast))
+        {
         await user.updateOne({
             $push : { continue : {podcast: req.body.podcast,time: req.body.time} }}
+            
     );
     return res.status(201).json("Podcast was added to continue list");
+        }
         }
     } catch (error) {
         res.status(500).json(error);

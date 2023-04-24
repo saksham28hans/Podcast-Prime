@@ -41,7 +41,8 @@ function App() {
             <Route exact path="/" element={ <Home showAlert={showAlert}/>} />
             <Route exact path="/home" element={ <Home showAlert={showAlert} />} />
             <Route exact path="/listened" element={ <Listened showAlert={showAlert} />}/>
-            <Route exact path="/watchlist" element={ <ContinueList showAlert={showAlert} />}/>
+            <Route exact path="/watchlist" element={ <FavList showAlert={showAlert} />}/>
+            <Route exact path="/continue" element={ <ContinueList showAlert={showAlert} />}/>
             <Route exact path="/signin/" element={<SignIn showAlert={showAlert}/>}/>  
             <Route exact path="/signup/" element={<Signup showAlert={showAlert}/>}/>
             <Route exact path="/profile/" element={<UserProfile showAlert={showAlert}/>}/>
