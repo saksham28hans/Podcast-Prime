@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { GlobalContext } from "../../context/GlobalState";
 import StarBorderIcon from '@mui/icons-material/StarBorder';
+import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 
 // import Listened from "../ListenedF/Listened";
 
@@ -31,9 +32,9 @@ const Header = () => {
               <Link to="/continue" activeClassName="active">
                 Continue Watching{" "}
                 {watchlist.length > 0 ? (
-                  <StarBorderIcon style={{ color: "red" }}/>
+                  <ArrowRightIcon style={{ color: "red" }}/>
                 ) : (
-                  <StarBorderIcon/>
+                  <ArrowRightIcon/>
                 )}
               </Link>
             </li>

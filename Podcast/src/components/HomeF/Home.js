@@ -81,7 +81,7 @@ function Home() {
   
  console.log(podcast)
   return (
-    <>
+    <div className=".main">
       <Header />
       <Search />
       {input === "" ? (
@@ -95,7 +95,7 @@ function Home() {
        ) : (
         <SearchList podcasts ={filtered} />
        )}  
-    </>
+   </div>
   );
 }
 

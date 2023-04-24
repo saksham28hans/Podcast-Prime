@@ -8,7 +8,6 @@ import SignIn from './components/UsersF/SignIn';
 import FavList from './components/FavouriteListF/FavList'; 
 import Home from './components/HomeF/Home';
 import Alert from './components/Alert';
-import UserProfile from './components/UserProfileF/UserProfile';
 import Watch from './components/WatchF/Watch';
 import ContinueList from './components/Continue Watching/ContinueList';
 

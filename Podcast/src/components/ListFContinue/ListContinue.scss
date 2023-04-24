@@ -1,47 +1,46 @@
-.list
+.list2
 {
-    width: 100%;
-    margin-top: 30px;
+    width: 100% !important;
+    margin-top: 30px !important;
 
-    .listTitle
+    .listTitle2
     {
         color:  hsl(207, 91%, 13%);
         font-size: 20px;
         font-weight: 500;
-        margin-left: 50px;
+        margin-left: 50px !important;
     }
 
-    .wrapper{
+    .wrapper2{
         
-        position: relative;
-        .sliderArrow
+        position: relative !important;
+        .sliderArrow2
         {
             width: 50px;
             height: 100px;
             background-color: rgb(22, 22, 22,0.5);
             color: white;
-            position: absolute;
+            position: absolute !important;
             z-index: 99;
             top: 0;
             bottom: 0;
             margin: auto;
             cursor: pointer;
 
-            &.left
+            &.left2
             {
               left: 0;
             }
 
-            &.right
+            &.right2
             {
                 right: 0;
             }
         }
-        .container
+        .container2
         {
             margin-left: 50px;
             display: flex;
-            width: max-content;
             margin-top: 10px;
             transform: translateX(0px);
             transition: all 1s ease;
