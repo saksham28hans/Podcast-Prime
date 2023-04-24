@@ -98,6 +98,7 @@ router.get('/stats',async(req,res)=>{
 })
 
 //Add to favourite
+//Add to favourite
 router.post('/favourite',async(req,res)=>{
     try {
         const user = await User.findById(req.body.id);

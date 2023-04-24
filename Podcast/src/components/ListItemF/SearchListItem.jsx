@@ -5,26 +5,7 @@ import axios from "axios";
 import { Link } from 'react-router-dom';
 import StarBorderIcon from '@mui/icons-material/StarBorder';
 
-const ListItem = ({index, item}) => {
-  const [isHovered, setisHovered] = useState(false);
-  const [movie, setmovie] = useState({});
-  
-  useEffect(() => {
-    const getMovie = async()=>{
-      try {
-        const mov = await axios('podcast/find/'+item);
-        setmovie(mov.data);
-      } catch (error) {
-        console.log(error);
-      }
-    }
-    getMovie();
-  }, [item]);
-
-
-  
-
-  
+const SearchListItem = ({movie}) => {
 
   const handleFavoriteClick = async (itemId) => {
     // const itemId = movie._id;
@@ -52,9 +33,6 @@ const ListItem = ({index, item}) => {
 
   };
 
-
-
-
   return (
 
     <div className='listItem' 
@@ -63,7 +41,6 @@ const ListItem = ({index, item}) => {
         <Link className='link' to = {'/watch'} state = {{movie : movie}}>
       <img src={movie.img} alt={movie.title} />
         </Link>
-
       <div className="itemInfo">
       <div class="listitemdetails">
         <nav>{movie.title}</nav>  
@@ -88,4 +65,4 @@ const ListItem = ({index, item}) => {
   );
 }
 
-export default ListItem;
+export default SearchListItem;

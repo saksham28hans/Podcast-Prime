@@ -1,6 +1,5 @@
 import React, { useContext } from 'react'
 import { GlobalContext } from '../../context/GlobalState'
-import PodCastCard from '../PodcastF/PodCastCard'
 
 import { Link } from "react-router-dom";
 
@@ -22,7 +21,7 @@ const Listened = () => {
                         (
                             <div className="movie-grid">
                                 {watched.map((watchedPodcast) => (
-                                    <PodCastCard key={watchedPodcast.id} movie={watchedPodcast} type="watched" />
+                                    {/* <PodCastCard key={watchedPodcast.id} movie={watchedPodcast} type="watched" /> */}
                                 ))}
                             </div>
                         )

@@ -1,9 +1,13 @@
-import {React,useState} from 'react';
+import {React,useState,useEffect} from 'react'; 
 import './newProduct.css'
 import storage from '../../firebase';
 import {createPodcast } from '../../context/movieContext/moviesApiCalls';
 import { useContext } from 'react';
 import {MovieContext} from '../../context/movieContext/MovieContext';
+import Spinner from '../../components/Spinner'
+import { useNavigate } from "react-router";
+
+
 
 const NewProduct = () => {
     const [movie, setmovie] = useState(null);
@@ -11,7 +15,14 @@ const NewProduct = () => {
     const [video, setvideo] = useState(null);
     const [uploaded, setuploaded] = useState(0);
     const {dispatch} = useContext(MovieContext);
+    const [loading, setLoading] = useState(false);
 
+    useEffect(() => {
+    if(uploaded == 2)
+    setLoading(false);
+      
+    }, [uploaded])
+    
     const handleChange = (e)=>
     {
         const value = e.target.value;
@@ -48,53 +59,62 @@ const NewProduct = () => {
        });
     }
 
-    const handleUpload  = (e)=>{
+    const handleUpload  = (e)=>{  
       e.preventDefault();
+      setLoading(true); 
+      console.log(loading);
       upload([
         {file : img, label :'img'},
         {file : video, label :'file'},
       ])
+      
+      console.log(loading);
     }
   return (
+   <>
     <div className='newProduct'>
-       <h1 className="addProductTitle">Add Movie</h1>
+       <h1 className="addProductTitle">Add Podcasts</h1>
        <form className="addProductForm">
         <div className="addProductItem">
             <label>Image</label>
-            <input type="file" id='img' onChange={(e)=>{setimg(e.target.files[0])}}/>
+            <input type="file" id='img' onChange={(e)=>{setimg(e.target.files[0])}} required/>
         </div>
         <div className="addProductItem">
             <label>Title</label>
-            <input type="text" placeholder='Podcast on DSA' name="title"  onChange={handleChange}/>
+            <input type="text" placeholder='Podcast on DSA' name="title"  onChange={handleChange} required/>
         </div>
         <div className="addProductItem">
             <label>Description</label>
-            <input type="text" placeholder='Description' name="desc"  onChange={handleChange}/>
+            <input type="text" placeholder='Description' name="desc"  onChange={handleChange} required/>
         </div>
         <div className="addProductItem">
             <label>Speaker</label>
-            <input type="text" placeholder='Saksham Hans' name="speaker"  onChange={handleChange}/>
+            <input type="text" placeholder='Speaker Name' name="speaker"  onChange={handleChange} required/>
         </div>
         <div className="addProductItem">
             <label>Category</label>
-            <input type="text" placeholder='Action' name="category"  onChange={handleChange}/>
+            <input type="text" placeholder='Action' name="category"  onChange={handleChange} required/>
         </div>
         <div className="addProductItem">
             <label>Type</label>
-            <input type="text" placeholder='video' name="type"  onChange={handleChange}/>
+            <input type="text" placeholder='video' name="type"  onChange={handleChange} required/>
         </div>
         <div className="addProductItem">
-            <label>Video</label>
-            <input type="file" onChange={(e)=>{setvideo(e.target.files[0])}}/>
+            <label>Audio/Video</label>
+            <input type="file" onChange={(e)=>{setvideo(e.target.files[0])}} required/>
         </div>
-        {uploaded === 2 ? (
-        <button className="addProductButton" onClick={handleSubmit}>Create </button>
-        ) :
-        (
-        <button className="addProductButton" onClick={handleUpload}>Upload</button>
-        )}
+        <div style={{display:'flex',alignItems:'center',justifyContent:'center',marginLeft:'2px'}}>
+        {uploaded === 2 ? 
+                (
+                <button className="addProductButton" onClick={handleSubmit}>Create</button>
+                ) :
+                (
+                <button className="addProductButton" onClick={handleUpload} disabled={loading}>{loading?<Spinner/>:'Upload'}</button>
+                )}
+       </div>
        </form>
     </div>
+   </>
   );
 }
 

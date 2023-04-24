@@ -2,14 +2,15 @@ import React, {useState } from 'react';
 import { BrowserRouter as Router,Routes,Route} from 'react-router-dom';
 import './App.css';
 // importing components
-import Header from './components/HeaderF/Header';
 import Listened from "./components/ListenedF/Listened";
 import Signup from './components/UsersF/Signup';
 import SignIn from './components/UsersF/SignIn';
 import FavList from './components/FavouriteListF/FavList'; 
-import Home from './components/Home';
+import Home from './components/HomeF/Home';
 import Alert from './components/Alert';
 import UserProfile from './components/UserProfileF/UserProfile';
+import Watch from './components/WatchF/Watch';
+import Logout from './components/Logout';
 
 
 function App() {
@@ -30,14 +31,10 @@ function App() {
     setUser(username);
   }
 
-  const handleLogout = () => {
-    // Make API call to log out user
-    setUser(null);
-  }
+  
 
   return (
       <div>
-        <Header user={user} onLogout={handleLogout} />
         <Alert alert={alert}/>
           <Routes>
             <Route exact path="/" element={ <Home showAlert={showAlert}/>} />
@@ -47,6 +44,8 @@ function App() {
             <Route exact path="/signin/" element={<SignIn showAlert={showAlert}/>}/>  
             <Route exact path="/signup/" element={<Signup showAlert={showAlert}/>}/>
             <Route exact path="/profile/" element={<UserProfile showAlert={showAlert}/>}/>
+            <Route exact path="/watch/" element={<Watch showAlert={showAlert}/>}/>
+            <Route exact path="/logout/" element={<Logout showAlert={showAlert}/>}/>
           </Routes>
       </div>
   );

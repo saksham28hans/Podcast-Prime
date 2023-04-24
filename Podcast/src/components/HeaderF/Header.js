@@ -1,12 +1,20 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { GlobalContext } from "../../context/GlobalState";
+import StarBorderIcon from '@mui/icons-material/StarBorder';
+
 // import Listened from "../ListenedF/Listened";
 
 import "./Header.css";
 
 const Header = () => {
   const { watchlist, watched } = useContext(GlobalContext);
+  let navigate=useNavigate();
+
+  const handleLogout=()=>{
+      localStorage.removeItem('users');
+      navigate('/signin');
+  }
 
   // console.log(watchlist ? true : false)
   return (
@@ -22,22 +30,9 @@ const Header = () => {
               <Link to="/watchlist" activeClassName="active">
                 Favourite List{" "}
                 {watchlist.length > 0 ? (
-                  <i class="fa-solid fa-tv" style={{ color: "gold" }}></i>
+                  <StarBorderIcon style={{ color: "red" }}/>
                 ) : (
-                  <i class="fa-solid fa-tv"></i>
-                )}
-              </Link>
-            </li>
-            <li>
-              <Link to="/listened" activeClassName="active">
-                Listened{" "}
-                {watched.length > 0 ? (
-                  <i
-                    class="fa-solid fa-headphones"
-                    style={{ color: "red" }}
-                  ></i>
-                ) : (
-                  <i class="fa-solid fa-headphones"></i>
+                  <StarBorderIcon/>
                 )}
               </Link>
             </li>
@@ -52,16 +47,16 @@ const Header = () => {
                   aria-haspopup="true"
                   aria-expanded="false"
                 >
-                  <img id="avatar" src="/img.jpg" alt="img"></img>
+                  <img id="avatar" src="/netflix_avatar.jpg" alt="img"></img>
                 </a>
               <div class="dropdown-content">
                 <Link to="/profile" className="dropdown-item">
                   Profile
                 </Link>
                 <div className="dropdown-divider"></div>
-                <Link to="/logout" className="dropdown-item">
+                <p style={{cursor:'pointer',textAlign:'center'}} onClick={handleLogout} className="dropdown-item">
                   Logout
-                </Link>
+                </p>
               </div>
             </div>
             </li>

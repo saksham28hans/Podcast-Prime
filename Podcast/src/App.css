@@ -6,6 +6,9 @@
   box-sizing: border-box;
 }
 
+.link{
+  text-decoration: none;
+}
 :root {
   --primary: #032541;
   --secondary: #21d07a;
@@ -915,6 +918,7 @@ header .nav-links li:last-child {
   }
   .trending-wrapper h1{
     text-align: center;
+    color: inherit;
   }
   
 }
