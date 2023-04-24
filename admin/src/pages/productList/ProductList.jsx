@@ -72,6 +72,9 @@ const ProductList = () => {
       ];
   return (
     <div className='productList'>
+   <Link to='/newProduct'>
+            <button className="productAddButton">Create</button>
+    </Link>
       <DataGrid
         rows={movies}
         columns={columns}
