@@ -3,7 +3,6 @@
     height: 180px;
     background-color:#C0DBEA;
     margin-right: 5px;
-    overflow: hidden;
     cursor: pointer;
     color: rgb(60, 10, 227);
 
@@ -22,15 +21,6 @@
         align-items: center;
         justify-content: space-between;
     }
-    // video
-    // {
-    //     width: 100%;
-    //     height: 140px;
-    //     object-fit: cover;
-    //     position: absolute;
-    //     top:0;
-    //     left: 0;
-    // }
     &:hover{
         width: 330px;
         height: 350px;

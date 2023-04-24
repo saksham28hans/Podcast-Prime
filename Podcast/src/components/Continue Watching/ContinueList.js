@@ -32,9 +32,9 @@ const ContinueList= () => {
     return (
     <>
      <Header />
-            <div className="movie-page">
+            <div className="movie-page2">
                     
-                <div className="container">
+                <div className="container2">
                     {cr_list.content && cr_list.content.length > 0 ?
                         (
                          <ListContinue key={cr_list.title} list={cr_list} />
