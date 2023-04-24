@@ -3,6 +3,7 @@
     height: 180px;
     background-color:#C0DBEA;
     margin-right: 5px;
+    overflow: hidden;
     cursor: pointer;
     color: rgb(60, 10, 227);
 
@@ -23,7 +24,7 @@
     }
     &:hover{
         width: 330px;
-        height: 350px;
+        height: 300px;
         -webkit-box-shadow :0px 2px 15px 0px rgba(255, 255, 255, 0.948);
         box-shadow: 0px 2px 15px 0px rgba(255,255,255,0.07);
         position: absolute;

@@ -61,7 +61,7 @@ const ListItemContinue = ({index, item}) => {
 
   return (
 
-    <div className='listItem'>
+    <div className='listItem1'>
         <Link className='link' to = {'/watch'} state = {{movie : movie, time:item[1]}}>
       <img src={movie?.img} alt={movie?.title} />
         </Link>

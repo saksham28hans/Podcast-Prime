@@ -81,7 +81,7 @@ function Home() {
   
  console.log(podcast)
   return (
-    <div className=".main">
+    <div className=".main flow">
       <Header />
       <Search />
       {input === "" ? (
