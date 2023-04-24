@@ -56,34 +56,34 @@ const ListItem = ({index, item}) => {
 
 
   return (
-
+    <Link className='link' to = {'/watch'} state = {{movie : movie}}>
     <div className='listItem' 
     style={{left:isHovered && index * 225 -50 + index*2.5}}
     onMouseEnter={()=>{setisHovered(true)}} onMouseLeave={()=>{setisHovered(false)}}>
-        <Link className='link' to = {'/watch'} state = {{movie : movie}}>
+       
       <img src={movie.img} alt={movie.title} />
-        </Link>
+        
 
       <div className="itemInfo">
       <div class="listitemdetails">
-        <nav>{movie.title}</nav>  
-        <a onClick={()=>{handleFavoriteClick(movie._id)}}>{JSON.parse(localStorage.getItem('users')).favourite.includes(movie._id) ? <Star /> : <StarBorderIcon />}</a>
+        <nav><b>{movie.title} </b></nav>  
+        <a onClick={()=>{handleFavoriteClick(movie._id)}}>{JSON.parse(localStorage.getItem('users')).favourite.includes(movie._id) ? <Star color= 'secondary' /> : <StarBorderIcon color= 'secondary' />}</a>
         </div>
         {isHovered && (
          <>
          {/* <video src="" controls autoPlay={true}  loop></video> */}
         <div className="itemInfoTop">
-          <span>{movie.speaker}</span>
-          <span>{movie.type}</span>
+          <span className='speaker'>{movie.speaker}</span>
+          <span className='type'>{movie.type}</span>
         </div>
         <div className="desc">
          {movie.desc}
         </div>
-        <div className="genre">{movie.category}</div>
         </>
         )}
       </div>
     </div>
+    </Link>
 
   );
 }

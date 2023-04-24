@@ -50,11 +50,8 @@ const Header = () => {
                   <img id="avatar" src="/netflix_avatar.jpg" alt="img"></img>
                 </a>
               <div class="dropdown-content">
-                <Link to="/profile" className="dropdown-item">
-                  Profile
-                </Link>
                 <div className="dropdown-divider"></div>
-                <p style={{cursor:'pointer',textAlign:'center'}} onClick={handleLogout} className="dropdown-item">
+                <p style={{cursor:'pointer',textAlign:'center',padding:'10px'}} onClick={handleLogout} className="dropdown-item">
                   Logout
                 </p>
               </div>

@@ -10,11 +10,9 @@ import Home from './components/HomeF/Home';
 import Alert from './components/Alert';
 import UserProfile from './components/UserProfileF/UserProfile';
 import Watch from './components/WatchF/Watch';
-import Logout from './components/Logout';
 
 
 function App() {
-  const [user, setUser] = useState(null);
   const [alert, setAlert] = useState(null);
   const showAlert=(message,type)=>{
     setAlert({
@@ -26,10 +24,7 @@ function App() {
     },1500);
   }
 
-  const handleLogin = (username, password) => {
-    // Make API call to authenticate user
-    setUser(username);
-  }
+
 
   
 
@@ -45,7 +40,6 @@ function App() {
             <Route exact path="/signup/" element={<Signup showAlert={showAlert}/>}/>
             <Route exact path="/profile/" element={<UserProfile showAlert={showAlert}/>}/>
             <Route exact path="/watch/" element={<Watch showAlert={showAlert}/>}/>
-            <Route exact path="/logout/" element={<Logout showAlert={showAlert}/>}/>
           </Routes>
       </div>
   );

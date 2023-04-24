@@ -87,3 +87,78 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 //     Account.js
 //   App.js
 //   index.js -->
+
+
+
+
+# Podcast Prime
+
+This is a full-stack web application built using the MERN (MongoDB, Express, React, Node.js) stack. The application allows users to  listen to both audio and video podcasts.
+
+## Features
+
+.Login and Signup for the user - User is expected to login and signup using his/her mail ID
+Users can search for the podcast he/she wishes to listen to.
+ A list of most popular podcasts on the main dashboard
+Mark a podcast as favorite - User can mark a podcast as favorite and then listen to it from the favorite list
+An admin panel where admin users can create or add the following things. Whatever podcast and details are added and uploaded by the admin, those will appear in the main dashboard: 
+Podcast Name 
+Podcast Description 
+Category and type (Audio/Video) of the podcast 
+Speaker in the podcast 
+File Upload (Audio or Video podcast
+
+## Technologies Used
+
+- MongoDB
+- Express.js
+- React.js
+- Node.js
+-Firebase(for storage)
+- JWT 
+- Bootstrap
+
+## Installation
+
+1. Clone the repository:
+
+   ```
+   git clone <link>
+   ```
+
+2. Install the dependencies for the server and client:and  Start the development server:
+
+
+   	cd backend
+   	npm install
+	npm start
+
+   	cd podcast
+   	npm instal
+	npm start
+
+cd admin
+npm install
+	npm start
+
+
+3. Navigate to `http://localhost:3000` in your web browser to view the application.
+
+## Configuration
+
+Before running the application, you'll need to create a `.env` file in the root directory with the following environment variables:
+
+- `MONGODB_URI`: the connection string for your MongoDB database
+- `JWT_SECRET`: a secret key for signing JWT tokens
+
+You can also configure other options in the `config` directory, such as the port number for the server and the API keys for podcast providers.
+
+## Credits
+
+This project was created by
+
+-Saksham Hans
+-Mohit Kumar
+-Dibyajyoti Bhuyan
+-Jyotiranjan Muduli
+
