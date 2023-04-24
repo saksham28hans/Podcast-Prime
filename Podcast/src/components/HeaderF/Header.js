@@ -65,7 +65,7 @@ const Header = () => {
                 </a>
               <div class="dropdown-content">
                 <div className="dropdown-divider"></div>
-                <p style={{cursor:'pointer',textAlign:'center'}} onClick={handleLogout} className="dropdown-item">
+                <p style={{cursor:'pointer',textAlign:'center',padding:'10px'}} onClick={handleLogout} className="dropdown-item">
                   Logout
                 </p>
               </div>

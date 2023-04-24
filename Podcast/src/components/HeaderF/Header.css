@@ -2,6 +2,9 @@
     display: inline-flex;
     vertical-align: top;
 }
+.active{
+  padding: 30px;
+}
 
 .inline-icon {
     vertical-align: bottom;

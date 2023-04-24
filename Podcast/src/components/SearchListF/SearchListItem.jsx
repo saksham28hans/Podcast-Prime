@@ -41,13 +41,14 @@ const SearchListItem = ({movie}) => {
         </Link>
       <div className="itemInfo">
       <div class="listitemdetails1">
-        <nav>{movie.title}</nav>  
+        <nav><b>{movie.title}</b> </nav>  
         {/* <a onClick={()=>{handleFavoriteClick(movie._id)}}>
         
         {JSON.parse(localStorage.getItem('users')).favourite.includes(movie._id) ? <Star /> : <StarBorderIcon />}</a> */}
         </div>
         <div className="desc">
           <br/>
+
          {movie.desc.slice(0, 50)+"..."}
         
         </div>

@@ -10,12 +10,10 @@ import Home from './components/HomeF/Home';
 import Alert from './components/Alert';
 import UserProfile from './components/UserProfileF/UserProfile';
 import Watch from './components/WatchF/Watch';
-import Logout from './components/Logout';
 import ContinueList from './components/Continue Watching/ContinueList';
 
 
 function App() {
-  const [user, setUser] = useState(null);
   const [alert, setAlert] = useState(null);
   const showAlert=(message,type)=>{
     setAlert({
@@ -27,10 +25,7 @@ function App() {
     },1500);
   }
 
-  const handleLogin = (username, password) => {
-    // Make API call to authenticate user
-    setUser(username);
-  }
+
 
   
 
@@ -46,7 +41,6 @@ function App() {
             <Route exact path="/signin/" element={localStorage.getItem('users')?<Navigate to="/" />:<SignIn showAlert={showAlert}/>}/>  
             <Route exact path="/signup/" element={localStorage.getItem('users')?<Navigate to="/" />:<Signup showAlert={showAlert}/>}/>
             <Route exact path="/watch/" element= {!localStorage.getItem('users')?<Navigate to="/signin" />:<Watch showAlert={showAlert}/>}/>
-            <Route exact path="/logout/" element={!localStorage.getItem('users')?<Navigate to="/signin" />:<Logout showAlert={showAlert}/>}/>
           </Routes>
       </div>
   );
