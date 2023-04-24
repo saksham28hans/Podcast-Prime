@@ -1,14 +1,20 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { GlobalContext } from "../../context/GlobalState";
 import StarBorderIcon from '@mui/icons-material/StarBorder';
-import HeadphonesIcon from '@mui/icons-material/Headphones';
+
 // import Listened from "../ListenedF/Listened";
 
 import "./Header.css";
 
 const Header = () => {
   const { watchlist, watched } = useContext(GlobalContext);
+  let navigate=useNavigate();
+
+  const handleLogout=()=>{
+      localStorage.removeItem('users');
+      navigate('/signin');
+  }
 
   // console.log(watchlist ? true : false)
   return (
@@ -48,9 +54,9 @@ const Header = () => {
                   Profile
                 </Link>
                 <div className="dropdown-divider"></div>
-                <Link to="/logout" className="dropdown-item">
+                <p style={{cursor:'pointer',textAlign:'center'}} onClick={handleLogout} className="dropdown-item">
                   Logout
-                </Link>
+                </p>
               </div>
             </div>
             </li>

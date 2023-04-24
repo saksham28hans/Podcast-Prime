@@ -1,10 +1,14 @@
-import {React,useState,useEffect} from 'react';
+import {React,useState,useEffect} from 'react'; 
 import './newProduct.css'
 import storage from '../../firebase';
 import {createPodcast } from '../../context/movieContext/moviesApiCalls';
 import { useContext } from 'react';
 import {MovieContext} from '../../context/movieContext/MovieContext';
 import Spinner from '../../components/Spinner'
+import { useNavigate } from "react-router";
+
+
+
 const NewProduct = () => {
     const [movie, setmovie] = useState(null);
     const [img, setimg] = useState(null);
