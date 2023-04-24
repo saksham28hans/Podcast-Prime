@@ -918,6 +918,7 @@ header .nav-links li:last-child {
   }
   .trending-wrapper h1{
     text-align: center;
+    color: inherit;
   }
   
 }
