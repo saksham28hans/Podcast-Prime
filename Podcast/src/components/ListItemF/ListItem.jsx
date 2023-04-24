@@ -1,9 +1,9 @@
-import { Add, PlayArrow, ThumbDownOutlined,ThumbUpAltOutlined } from '@material-ui/icons';
 import {React, useState, useEffect} from 'react';
 import './ListItem.scss';
 import axios from "axios";
 import { Link } from 'react-router-dom';
 import StarBorderIcon from '@mui/icons-material/StarBorder';
+import { Star } from '@material-ui/icons';
 
 const ListItem = ({index, item}) => {
   const [isHovered, setisHovered] = useState(false);
@@ -67,7 +67,7 @@ const ListItem = ({index, item}) => {
       <div className="itemInfo">
       <div class="listitemdetails">
         <nav>{movie.title}</nav>  
-        <a onClick={()=>{handleFavoriteClick(movie._id)}}><StarBorderIcon/></a>
+        <a onClick={()=>{handleFavoriteClick(movie._id)}}>{JSON.parse(localStorage.getItem('users')).favourite.includes(movie._id) ? <Star /> : <StarBorderIcon />}</a>
         </div>
         {isHovered && (
          <>
