@@ -41,7 +41,8 @@ function App() {
             <Route exact path="/" element={!localStorage.getItem('users')?<Navigate to="/signin" />:<Home showAlert={showAlert}/>} />
             <Route exact path="/home" element={ <Home showAlert={showAlert} />} />
             <Route exact path="/listened" element={ <Listened showAlert={showAlert} />}/>
-            <Route exact path="/watchlist" element={!localStorage.getItem('users')?<Navigate to="/signin" />:<FavList showAlert={showAlert} />}/>s
+            <Route exact path="/watchlist" element={!localStorage.getItem('users')?<Navigate to="/signin" />:<FavList showAlert={showAlert} />}/>
+            <Route exact path="/continue" element={!localStorage.getItem('users')?<Navigate to="/signin" />:<ContinueList showAlert={showAlert} />}/>
             <Route exact path="/signin/" element={localStorage.getItem('users')?<Navigate to="/" />:<SignIn showAlert={showAlert}/>}/>  
             <Route exact path="/signup/" element={localStorage.getItem('users')?<Navigate to="/" />:<Signup showAlert={showAlert}/>}/>
             <Route exact path="/watch/" element= {!localStorage.getItem('users')?<Navigate to="/signin" />:<Watch showAlert={showAlert}/>}/>
