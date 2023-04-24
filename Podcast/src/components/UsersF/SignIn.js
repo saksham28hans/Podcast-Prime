@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 export default function SignIn(props) {
   const [credentials, setCredentials] = useState({email:"",password:""})
@@ -59,6 +60,7 @@ export default function SignIn(props) {
                         <button type="Submit"  className="btn btn-primary btn-lg">Sign in</button>
                       </div>
                     </form>
+                    <Link to="/signup">Don't have an Account? Create One</Link>
                   </div>
                   <div className="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
                     <img

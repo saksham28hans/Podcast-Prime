@@ -1,21 +1,22 @@
+import { Add, PlayArrow, ThumbDownOutlined,ThumbUpAltOutlined } from '@material-ui/icons';
 import {React, useState, useEffect} from 'react';
-import './ListItem.scss';
+import './ListItemContinue.scss';
 import axios from "axios";
 import { Link } from 'react-router-dom';
 import StarBorderIcon from '@mui/icons-material/StarBorder';
-import { Star } from '@material-ui/icons';
 
-const ListItem = ({index, item}) => {
+const ListItemContinue = ({index, item}) => {
   const [isHovered, setisHovered] = useState(false);
   const [movie, setmovie] = useState({});
   
   useEffect(() => {
-    console.log(item);
+    console.log(item[0]);
    
     const getMovie = async()=>{
       try {
         
-        const mov = await axios('podcast/find/'+item);
+        const mov = await axios('podcast/find/'+item[0]);
+        console.log(mov.data);
         setmovie(mov.data);
       } catch (error) {
         console.log(error);
@@ -23,7 +24,7 @@ const ListItem = ({index, item}) => {
     }
     getMovie();
   }, [item]);
-
+  console.log(movie);
 
   
 
@@ -59,36 +60,34 @@ const ListItem = ({index, item}) => {
 
 
   return (
-    <Link className='link' to = {'/watch'} state = {{movie : movie}}>
-    <div className='listItem' 
-    style={{left:isHovered && index * 225 -50 + index*2.5}}
-    onMouseEnter={()=>{setisHovered(true)}} onMouseLeave={()=>{setisHovered(false)}}>
-       
-      <img src={movie.img} alt={movie.title} />
-        
+
+    <div className='listItem'>
+        <Link className='link' to = {'/watch'} state = {{movie : movie, time:item[1]}}>
+      <img src={movie?.img} alt={movie?.title} />
+        </Link>
 
       <div className="itemInfo">
       <div class="listitemdetails">
-        <nav>{movie.title}</nav>  
-        <span onClick={()=>{handleFavoriteClick(movie._id)}}>{JSON.parse(localStorage.getItem('users')) && JSON.parse(localStorage.getItem('users')).favourite.includes(movie._id) ? <Star /> : <StarBorderIcon />}</span>
+        <nav>{movie?.title}</nav>  
+        <a onClick={()=>{handleFavoriteClick(movie?._id)}}><StarBorderIcon/></a>
         </div>
         {isHovered && (
          <>
          {/* <video src="" controls autoPlay={true}  loop></video> */}
         <div className="itemInfoTop">
-          <span className='speaker'>{movie.speaker}</span>
-          <span className='type'>{movie.type}</span>
+          <span>{movie?.speaker}</span>
+          <span>{movie?.type}</span>
         </div>
         <div className="desc">
-         {movie.desc}
+         {movie?.desc}
         </div>
+        <div className="genre">{movie?.category}</div>
         </>
         )}
       </div>
     </div>
-    </Link>
 
   );
 }
 
-export default ListItem;
+export default ListItemContinue;

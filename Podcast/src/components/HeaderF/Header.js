@@ -12,10 +12,11 @@ const Header = () => {
   let navigate=useNavigate();
 
   const handleLogout=()=>{
+      
       localStorage.removeItem('users');
       navigate('/signin');
   }
-
+  
   // console.log(watchlist ? true : false)
   return (
     <>
@@ -26,6 +27,16 @@ const Header = () => {
           </div>
 
           <ul className="nav-links">
+          <li>
+              <Link to="/continue" activeClassName="active">
+                Continue Watching{" "}
+                {watchlist.length > 0 ? (
+                  <StarBorderIcon style={{ color: "red" }}/>
+                ) : (
+                  <StarBorderIcon/>
+                )}
+              </Link>
+            </li>
             <li>
               <Link to="/watchlist" activeClassName="active">
                 Favourite List{" "}
@@ -35,6 +46,9 @@ const Header = () => {
                   <StarBorderIcon/>
                 )}
               </Link>
+            </li>
+            <li>
+                <span style={{color:'wheat'}}>{localStorage.getItem('users') && JSON.parse(localStorage.getItem('users')).username}</span>
             </li>
             <li>
             <div class="dropdown">
