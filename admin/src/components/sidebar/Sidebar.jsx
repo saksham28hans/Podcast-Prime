@@ -23,7 +23,7 @@ const Sidebar = () => {
                  Users
             </li>
           </Link> */}
-          <Link to='/movies' className='link'>
+          <Link to='/podcast' className='link'>
             <li className="sidebarListItem">
                 <PlayCircleOutline className='sidebarIcon' />
                  Podcast

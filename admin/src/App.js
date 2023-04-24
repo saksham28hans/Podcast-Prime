@@ -40,7 +40,7 @@ function App() {
         <Route exact path="/users" element={<UserList />}/>
         <Route exact path="/user/:userId" element={<User />}/>
         <Route exact path="/newUser" element={<NewUser />}/>
-        <Route exact path="/movies" element={<ProductList />}/>
+        <Route exact path="/podcast" element={<ProductList />}/>
         <Route exact path="/product/:productId" element={<Product />}/>
         <Route exact path="/newProduct" element={<NewProduct />}/>
         <Route exact path="/lists" element={<DisplayList />}/>
