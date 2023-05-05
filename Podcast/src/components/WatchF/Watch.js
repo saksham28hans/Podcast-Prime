@@ -1,4 +1,6 @@
-import { ArrowBackOutlined } from '@material-ui/icons';
+// import { ArrowBackOutlined } from '@material-ui/icons';
+// import {ArrowBackIosIcon,ArrowForwardIosIcon} from '@mui/icons-material';
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import {React,useState,useEffect} from 'react';
 import './Watch.scss';
 import { Link, useLocation } from 'react-router-dom';
@@ -30,7 +32,7 @@ const Watch = () => {
     <div className='watch'>
      <Link to = '/' onClick={()=>{handleContinue( JSON.parse(localStorage.getItem("users"))._id,location.state.movie._id,currentTime)}}>
        <div className="back">
-        <ArrowBackOutlined />
+        <ArrowBackIosIcon />
         Home
        </div>
      </Link>

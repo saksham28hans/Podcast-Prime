@@ -3,7 +3,8 @@ import './ListItem.scss';
 import axios from "axios";
 import { Link } from 'react-router-dom';
 import StarBorderIcon from '@mui/icons-material/StarBorder';
-import { Star } from '@material-ui/icons';
+// import { Star } from '@material-ui/icons';
+import StarIcon from '@mui/icons-material/Star';
 
 const ListItem = ({index, item}) => {
   const [isHovered, setisHovered] = useState(false);
@@ -71,7 +72,7 @@ const ListItem = ({index, item}) => {
       <div className="itemInfo">
       <div class="listitemdetails">
         <nav>{movie.title}</nav>  
-        <span onClick={()=>{handleFavoriteClick(movie._id)}}>{JSON.parse(localStorage.getItem('users')) && JSON.parse(localStorage.getItem('users')).favourite.includes(movie._id) ? <Star /> : <StarBorderIcon />}</span>
+        <span onClick={()=>{handleFavoriteClick(movie._id)}}>{JSON.parse(localStorage.getItem('users')) && JSON.parse(localStorage.getItem('users')).favourite.includes(movie._id) ? <StarIcon /> : <StarBorderIcon />}</span>
         </div>
         {isHovered && (
          <>

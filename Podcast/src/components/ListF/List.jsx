@@ -1,4 +1,7 @@
-import { ArrowBackIosOutlined, ArrowForwardIosOutlined } from '@material-ui/icons';
+// import { ArrowBackIosOutlined, ArrowForwardIosOutlined } from '@material-ui/icons';
+// import {ArrowBackIosIcon,ArrowForwardIosIcon} from '@mui/icons-material';
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import {React,useRef,useState} from 'react';
 import ListItem from '../ListItemF/ListItem';
 
@@ -26,14 +29,14 @@ const List = ({list}) => {
     <div className='list'>
       <span className="listTitle">{list.title}</span>
       <div className="wrapper">
-        <ArrowBackIosOutlined style={{display:`${slideNumber ===0 ?`none`:''} `}} className='sliderArrow left' onClick={()=>{handleClick("left")}}/>
+        <ArrowBackIosIcon style={{display:`${slideNumber ===0 ?`none`:''} `}} className='sliderArrow left' onClick={()=>{handleClick("left")}}/>
         <div className="container" ref={listRef}>
             {list.content.map((item,i)=> (
             <ListItem index={i} item = {item} />
             ))}
             
         </div>
-        <ArrowForwardIosOutlined style={{display: `${list.content.length < 5 ? `none`:''}`}} className='sliderArrow right' onClick={()=>{handleClick("right")}}/>
+        <ArrowForwardIosIcon style={{display: `${list.content.length < 5 ? `none`:''}`}} className='sliderArrow right' onClick={()=>{handleClick("right")}}/>
       </div>
     </div>
   );

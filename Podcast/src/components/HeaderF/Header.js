@@ -42,7 +42,7 @@ const Header = () => {
               <Link to="/watchlist" activeClassName="active">
                 Favourite List{" "}
                 {watchlist.length > 0 ? (
-                  <StarBorderIcon style={{ color: "red" }}/>
+                  <StarBorderIcon style={{ color: "red" }}/> 
                 ) : (
                   <StarBorderIcon/>
                 )}

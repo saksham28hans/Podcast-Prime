@@ -15,7 +15,7 @@ function Home() {
   const [lists, setLists] = useState([]);
   const [podcast, setPodcast] = useState([]);
   const [filtered,setfiltered] = useState([]);
-  const axiosInstance = axios.create({baseURL:process.env.REACT_APP_API_URL,});
+  const axiosInstance = axios.create({baseURL:process.env.REACT_APP_API_URL});
   useEffect(() => {
     const getList = async () => {
       try {
