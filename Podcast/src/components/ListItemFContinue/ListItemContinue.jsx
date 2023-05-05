@@ -8,6 +8,7 @@ import StarBorderIcon from '@mui/icons-material/StarBorder';
 const ListItemContinue = ({index, item}) => {
   const [isHovered, setisHovered] = useState(false);
   const [movie, setmovie] = useState({});
+  const axiosInstance = axios.create({baseURL:process.env.REACT_APP_API_URL,});
   
   useEffect(() => {
     console.log(item[0]);
@@ -15,7 +16,7 @@ const ListItemContinue = ({index, item}) => {
     const getMovie = async()=>{
       try {
         
-        const mov = await axios('podcast/find/'+item[0]);
+        const mov = await axiosInstance.get('podcast/find/'+item[0]);
         console.log(mov.data);
         setmovie(mov.data);
       } catch (error) {
@@ -35,7 +36,7 @@ const ListItemContinue = ({index, item}) => {
     const user_g = JSON.parse(localStorage.getItem('users'));
     const favorites = user_g.favourite;
     try {
-      const res = await axios.post('users/favourite',{id:user_g._id,podcast:itemId})
+      const res = await axiosInstance.post('users/favourite',{id:user_g._id,podcast:itemId})
       console.log(res.data);
     } catch (error) {
       console.log(error)

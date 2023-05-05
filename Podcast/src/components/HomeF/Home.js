@@ -15,10 +15,11 @@ function Home() {
   const [lists, setLists] = useState([]);
   const [podcast, setPodcast] = useState([]);
   const [filtered,setfiltered] = useState([]);
+  const axiosInstance = axios.create({baseURL:process.env.REACT_APP_API_URL,});
   useEffect(() => {
     const getList = async () => {
       try {
-        const res = await axios.get(`lists`);
+        const res = await axiosInstance.get(`lists`);
         // , {
         //   headers: {
         //     token: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NDM4MjA4YmI1MmRmYzUwZDU1MjA0NCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY4MjI4MjMxNSwiZXhwIjoxNjgyNzE0MzE1fQ.Jz9XKU95rCt_KFCBrfM99V7kUnqlLeihT_wL1DiblBE`,
@@ -34,7 +35,7 @@ function Home() {
 
     const getPodcast = async () => {
       try {
-        const res1 = await axios.get(`podcast`);
+        const res1 = await axiosInstance.get(`podcast`);
         // , {
         //   headers: {
         //     token: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NDM4MjA4YmI1MmRmYzUwZDU1MjA0NCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY4MjI4MjMxNSwiZXhwIjoxNjgyNzE0MzE1fQ.Jz9XKU95rCt_KFCBrfM99V7kUnqlLeihT_wL1DiblBE`,

@@ -8,6 +8,7 @@ import { Star } from '@material-ui/icons';
 const ListItem = ({index, item}) => {
   const [isHovered, setisHovered] = useState(false);
   const [movie, setmovie] = useState({});
+  const axiosInstance = axios.create({baseURL:process.env.REACT_APP_API_URL,});
   
   useEffect(() => {
     console.log(item);
@@ -15,7 +16,7 @@ const ListItem = ({index, item}) => {
     const getMovie = async()=>{
       try {
         
-        const mov = await axios('podcast/find/'+item);
+        const mov = await axiosInstance.get('podcast/find/'+item);
         setmovie(mov.data);
       } catch (error) {
         console.log(error);
@@ -34,7 +35,7 @@ const ListItem = ({index, item}) => {
     const user_g = JSON.parse(localStorage.getItem('users'));
     const favorites = user_g.favourite;
     try {
-      const res = await axios.post('users/favourite',{id:user_g._id,podcast:itemId})
+      const res = await axiosInstance.post('users/favourite',{id:user_g._id,podcast:itemId})
       console.log(res.data);
     } catch (error) {
       console.log(error)

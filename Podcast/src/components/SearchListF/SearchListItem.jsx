@@ -6,13 +6,13 @@ import { Link } from 'react-router-dom';
 import StarBorderIcon from '@mui/icons-material/StarBorder';
 
 const SearchListItem = ({movie}) => {
-  
+  const axiosInstance = axios.create({baseURL:process.env.REACT_APP_API_URL,});
   const handleFavoriteClick = async (itemId) => {
     // const itemId = movie._id;
     const user_g = JSON.parse(localStorage.getItem('users'));
     const favorites = user_g.favourite;
     try {
-      const res = await axios.post('users/favourite',{id:user_g._id,podcast:itemId})
+      const res = await axiosInstance.post('users/favourite',{id:user_g._id,podcast:itemId})
       console.log(res.data);
     } catch (error) {
       console.log(error)

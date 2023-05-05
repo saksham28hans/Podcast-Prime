@@ -11,6 +11,7 @@ export default function Signup(props) {
     name: "",
     cpassword: "",
   });
+  const axiosInstance = axios.create({baseURL:process.env.REACT_APP_API_URL,});
   let navigate = useNavigate();
   const onChange = (e) => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
@@ -21,7 +22,7 @@ export default function Signup(props) {
       props.showAlert("Password and confirm Password are different!", "danger");
     } else {
       try {
-        const res = await axios.post("auth/register", {
+        const res = await axiosInstance.post("auth/register", {
           username: credentials.username,
           email: credentials.email,
           password: credentials.password,

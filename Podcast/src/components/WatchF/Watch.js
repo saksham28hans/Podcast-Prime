@@ -6,11 +6,12 @@ import axios from "axios";
 
 const Watch = () => {
   const location = useLocation();
+  const axiosInstance = axios.create({baseURL:process.env.REACT_APP_API_URL,});
   const [currentTime, setCurrentTime] = useState(0);
   console.log(currentTime)
   const handleContinue = async(id,podcast,time)=>{
     try {
-      const res = await axios.post('users/continue',{id,podcast,time},{
+      const res = await axiosInstance.post('users/continue',{id,podcast,time},{
         headers : {
             token : "Bearer " + JSON.parse(localStorage.getItem("users")).accessToken,
         },
