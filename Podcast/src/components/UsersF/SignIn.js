@@ -11,7 +11,7 @@ export default function SignIn(props) {
     e.preventDefault();
 
     try {
-      const res = await axios.post("https://podcast-prime.onrender.com/api/auth1/login", credentials);
+      const res = await axios.post("https://podcast-prime.onrender.com/api/auth/login", credentials);
       localStorage.setItem("users", JSON.stringify(res.data));
       props.showAlert("Logged in Successfully", "success");
       navigate("/");
